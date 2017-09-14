@@ -29,10 +29,15 @@ it "And I see a count of the different kinds of items in each vending machine." 
 
 
 
-visit snack_path(chips)
+  visit snack_path(chips)
+  expect(page).to have_content("Turing's unmixed drinks and basement")
+  expect(page).to have_content("Don' mixed drinks")
+  expect(page).to have_content("Star Bar")
 
+  expect(page).to have_content("2 kinds of snacks")
+  expect(page).to have_content("4 kinds of snacks")
 
-
+  expect(page).to have_content("average price $2.75")
 
         end
       end
