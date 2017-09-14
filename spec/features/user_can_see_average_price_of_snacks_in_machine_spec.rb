@@ -6,10 +6,15 @@ describe "When I visit a specific vending machine page" do
     owner = Owner.create(name: "Sam's Snacks")
     dons_machine  = owner.machines.create(location: "Don's Mixed Drinks")
 
-    chips = dons_machine.snacks.create(name: "chips", price:2.50)
-    candy = dons_machine.snacks.create(name: "candy", price:2.50)
-    hot_chips = dons_machine.snacks.create(name: "hot chips", price:3.0)
-    banana = dons_machine.snacks.create(name: "hot chips", price:3.0)
+    chips = Snack.create(name: "chips", price:2.50)
+    candy = Snack.create(name: "candy", price:2.50)
+    hot_chips = Snack.create(name: "hot chips", price:3.0)
+    banana = Snack.create(name: "hot chips", price:3.0)
+
+    SnackMachine.create(machine: dons_machine, snack: banana)
+    SnackMachine.create(machine: dons_machine, snack: hot_chips)
+    SnackMachine.create(machine: dons_machine, snack: chips)
+    SnackMachine.create(machine: dons_machine, snack: candy)
 
     visit machine_path(dons_machine)
 
